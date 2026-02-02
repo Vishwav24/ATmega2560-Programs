@@ -5,6 +5,8 @@
 #define port_kread (*(volatile char*)0x106)
 #define portioa (*(volatile char *)0x21) 
 #define porthla (*(volatile char *)0x22) 
+#define portioc (*(volatile char *)0x27)
+#define porthlc (*(volatile char *)0x28)
 //Data Register Port F
 void highlowf(volatile char status)
 {
@@ -29,6 +31,16 @@ void highlowk(volatile char status)
 void portk(volatile char inout)
 {
   portiok=inout;
+}
+//DDR port c
+void portc(volatile char io)
+{
+  portioc = io;
+}
+// Data register port c
+void highlowc(volatile char hl)
+{
+  porthlc = hl;
 }
 //DDr Port a
 void porta(volatile char inout)
@@ -58,3 +70,4 @@ unsigned char portkread()
 {
   return port_kread;
 }
+//

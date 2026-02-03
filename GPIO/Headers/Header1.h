@@ -3,10 +3,13 @@
 #define portiok (*(volatile char *)0x107)
 #define porthlk (*(volatile char *) 0x108)
 #define port_kread (*(volatile char*)0x106)
+#define port_cread (*(volatile char *)0x026)
 #define portioa (*(volatile char *)0x21) 
 #define porthla (*(volatile char *)0x22) 
 #define portioc (*(volatile char *)0x27)
 #define porthlc (*(volatile char *)0x28)
+#define portiob (*(volatile char *)0x24)
+#define porthlb (*(volatile char *)0x25)
 //Data Register Port F
 void highlowf(volatile char status)
 {
@@ -52,13 +55,29 @@ void highlowa(volatile char hl)
 {
   porthla = hl;
 }
-//Numbers in Seven Segment
+//DDR Port b
+void portb(volatile char io)
+{
+  portiob = io;
+}
+//Data register b
+void highlowb(volatile char hl)
+{
+  porthlb = hl;
+}
+//Numbers in Seven Segment porf
 void seg(volatile char num)
 {
   char arr[11]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x80};
    highlowf(arr[num]);
 }
-//Numbers in Seven Seg with dot 
+//Numbers in Seven Segment portb
+void segb(volatile char num)
+{
+  char arr[11]={0x3f,0x06,0x5b,0x4f,0x66,0x6d,0x7d,0x07,0x7f,0x6f,0x80};
+   highlowb(arr[num]);
+}
+//Numbers in Seven Seg with dot in portf 
 void segdot(volatile char num)
 {
   char arrr[11]={0xBF, 0x86, 0xDB, 0xCF, 0xE6, 0xED, 0xFD, 0x87, 0xFF, 0xEF
@@ -70,4 +89,4 @@ unsigned char portkread()
 {
   return port_kread;
 }
-//
+//7seg and Display

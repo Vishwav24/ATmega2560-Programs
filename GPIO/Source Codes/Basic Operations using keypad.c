@@ -1,4 +1,4 @@
-// use  #include "Header1.h"
+ #include "C:\ATmega2560_Programs\GPIO\Headers\Header1.h"
 int main()
 {
   int a[3];
@@ -86,9 +86,9 @@ int main()
           delay1(2);
           t++;
         }
-        }
         delay1(2);
         highlowc(0);
+      }
       }
     }
 }

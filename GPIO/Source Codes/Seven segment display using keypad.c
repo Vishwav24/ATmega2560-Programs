@@ -1,4 +1,4 @@
-// use #include "Header1.h"
+#include "Header1.h"
 int main()
 {
   portk(0x00);
@@ -16,7 +16,7 @@ int main()
         highlowc(1<<i);
        if(port_cread==0x01&&port_kread==0x01)
         {
-          segb(0);
+          segb(1);
         }
         if(port_cread==0x01&&port_kread==0x02)
         {
